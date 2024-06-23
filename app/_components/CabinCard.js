@@ -1,4 +1,5 @@
 import { UsersIcon } from "@heroicons/react/24/solid";
+import { formatCurrency } from "@/app/api/utils/helpers";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,14 +34,16 @@ function CabinCard({ cabin }) {
             {discount > 0 ? (
               <>
                 <span className="text-3xl font-[350]">
-                  ${regularPrice - discount}
+                  {formatCurrency(regularPrice - discount)}
                 </span>
                 <span className="line-through font-semibold text-primary-600">
-                  ${regularPrice}
+                  {formatCurrency(regularPrice)}
                 </span>
               </>
             ) : (
-              <span className="text-3xl font-[350]">${regularPrice}</span>
+              <span className="text-3xl font-[350]">
+                {formatCurrency(regularPrice)}
+              </span>
             )}
             <span className="text-primary-200">/ night</span>
           </p>

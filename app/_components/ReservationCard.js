@@ -1,6 +1,7 @@
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { format, formatDistance, isPast, isToday, parseISO } from "date-fns";
 import DeleteReservation from "@/app/_components/DeleteReservation";
+import { formatCurrency } from "@/app/api/utils/helpers";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ export const formatDistanceFromNow = (dateStr) =>
   }).replace("about ", "");
 
 function ReservationCard({ booking }) {
-  console.log(booking);
+
   const {
     id,
     guestId,
@@ -60,7 +61,10 @@ function ReservationCard({ booking }) {
         </p>
 
         <div className="flex gap-5 mt-auto items-baseline">
-          <p className="text-xl font-semibold text-accent-400">${totalPrice}</p>
+          <p className="text-xl font-semibold text-accent-400">
+            {" "}
+            {formatCurrency(totalPrice)}
+          </p>
           <p className="text-primary-300">&bull;</p>
           <p className="text-lg text-primary-300">
             {numGuests} guest{numGuests > 1 && "s"}
